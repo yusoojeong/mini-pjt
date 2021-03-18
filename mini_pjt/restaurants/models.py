@@ -11,4 +11,4 @@ class Restaurant(models.Model):
     description = models.CharField(max_length=200)                          # 음식점 소개
     address = models.CharField(max_length=100)                              # 음식점 주소
     phone_number = models.CharField(max_length=13)                          # 음식점 번호
-    menus = models.ManyToManyField(Menu, related_name='restaurants')  # 메뉴 목록
+    menus = models.ManyToManyField(Menu, related_name='restaurants')        # 메뉴 목록
