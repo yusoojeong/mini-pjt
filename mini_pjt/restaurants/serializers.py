@@ -8,7 +8,21 @@ class RestaurantSerializer(serializers.ModelSerializer):
         model = Restaurant
         fields = '__all__'
 
+
 class MenuSerializer(serializers.ModelSerializer):
     class Meta:
         model = Menu
-        fields = ('name', 'price',)
+        fields = ('id', 'name', 'price',)
+
+
+class ReadSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Restaurant
+        fields = ('id', 'name', 'address', 'phone_number',)
+
+
+class DetailSerializer(serializers.ModelSerializer):
+    menus = serializers.StringRelatedField(many=True)
+    class Meta:
+        model = Restaurant
+        fields = ('id', 'name', 'discription', 'address', 'phone_number', 'menus',)
