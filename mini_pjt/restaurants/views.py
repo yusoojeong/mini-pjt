@@ -8,11 +8,13 @@ from rest_framework.decorators import api_view
 from .models import Restaurant, Menu
 from .serializers import RestaurantSerializer, MenuSerializer, ReadSerializer, DetailSerializer
 
+
 @api_view(['GET'])
 def index(request):
     restaurants = Restaurant.objects.all().order_by('pk')
     serializer = ReadSerializer(restaurants, many=True)
     return Response(serializer.data)
+
 
 # 음식점 Create
 @api_view(['POST'])
@@ -50,6 +52,7 @@ def menu_create(request):
         serializer.save()
 
         return Response(serializer.data)
+
 
 # 음식점 메뉴 추가
 @api_view(['POST'])
